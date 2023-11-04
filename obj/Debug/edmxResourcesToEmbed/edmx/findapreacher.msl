@@ -1,0 +1,721 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FindaPreacherModelStoreContainer" CdmEntityContainer="FindaPreacherEntities2">
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="FindaPreacherModel.Country">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Country1" ColumnName="Country" />
+          <ScalarProperty Name="ShortCode" ColumnName="ShortCode" />
+          <ScalarProperty Name="TeleCode" ColumnName="TeleCode" />
+          <ScalarProperty Name="UniversalDiffTime" ColumnName="UniversalDiffTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DenominationTypes">
+      <EntityTypeMapping TypeName="FindaPreacherModel.DenominationType">
+        <MappingFragment StoreEntitySet="DenominationTypes">
+          <ScalarProperty Name="DenominationTypeId" ColumnName="DenominationTypeId" />
+          <ScalarProperty Name="DenominationType1" ColumnName="DenominationType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Districts">
+      <EntityTypeMapping TypeName="FindaPreacherModel.District">
+        <MappingFragment StoreEntitySet="Districts">
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventComments">
+      <EntityTypeMapping TypeName="FindaPreacherModel.EventComment">
+        <MappingFragment StoreEntitySet="EventComments">
+          <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventEnquiries">
+      <EntityTypeMapping TypeName="FindaPreacherModel.EventEnquiry">
+        <MappingFragment StoreEntitySet="EventEnquiries">
+          <ScalarProperty Name="EnquiryID" ColumnName="EnquiryID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="HelpServiceTypeIDs" ColumnName="HelpServiceTypeIDs" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventHelpServices">
+      <EntityTypeMapping TypeName="FindaPreacherModel.EventHelpService">
+        <MappingFragment StoreEntitySet="EventHelpService">
+          <ScalarProperty Name="EventHelpServiceID" ColumnName="EventHelpServiceID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="HelpServiceTypeID" ColumnName="HelpServiceTypeID" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="IsPersonal" ColumnName="IsPersonal" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventImages">
+      <EntityTypeMapping TypeName="FindaPreacherModel.EventImage">
+        <MappingFragment StoreEntitySet="EventImages">
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="FindaPreacherModel.Event">
+        <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="MinistryTypeID" ColumnName="MinistryTypeID" />
+          <ScalarProperty Name="HelpServiceTypeIDs" ColumnName="HelpServiceTypeIDs" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="ContactEmailID" ColumnName="ContactEmailID" />
+          <ScalarProperty Name="IsBookingNeeded" ColumnName="IsBookingNeeded" />
+          <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+          <ScalarProperty Name="TicketsAvailable" ColumnName="TicketsAvailable" />
+          <ScalarProperty Name="TicketsPerPerson" ColumnName="TicketsPerPerson" />
+          <ScalarProperty Name="TicketsBooked" ColumnName="TicketsBooked" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventVideos">
+      <EntityTypeMapping TypeName="FindaPreacherModel.EventVideo">
+        <MappingFragment StoreEntitySet="EventVideos">
+          <ScalarProperty Name="VideoID" ColumnName="VideoID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FavouriteEvents">
+      <EntityTypeMapping TypeName="FindaPreacherModel.FavouriteEvent">
+        <MappingFragment StoreEntitySet="FavouriteEvents">
+          <ScalarProperty Name="FavouriteID" ColumnName="FavouriteID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FavouritePreachers">
+      <EntityTypeMapping TypeName="FindaPreacherModel.FavouritePreacher">
+        <MappingFragment StoreEntitySet="FavouritePreachers">
+          <ScalarProperty Name="FavouriteID" ColumnName="FavouriteID" />
+          <ScalarProperty Name="PreacherID" ColumnName="PreacherID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HelpServiceTypes">
+      <EntityTypeMapping TypeName="FindaPreacherModel.HelpServiceType">
+        <MappingFragment StoreEntitySet="HelpServiceTypes">
+          <ScalarProperty Name="HelpServiceTypeID" ColumnName="HelpServiceTypeID" />
+          <ScalarProperty Name="HelpServiceType1" ColumnName="HelpServiceType" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MinistryTypes">
+      <EntityTypeMapping TypeName="FindaPreacherModel.MinistryType">
+        <MappingFragment StoreEntitySet="MinistryTypes">
+          <ScalarProperty Name="MinistryTypeID" ColumnName="MinistryTypeID" />
+          <ScalarProperty Name="MinistryType1" ColumnName="MinistryType" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="FindaPreacherModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedByUserType" ColumnName="CreatedByUserType" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="FindaPreacherModel.State">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="FindaPreacherModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Pin" ColumnName="Pin" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="DenominationTypeId" ColumnName="DenominationTypeId" />
+          <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="OrganisationName" ColumnName="OrganisationName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="FindaPreacherModel.UserType">
+        <MappingFragment StoreEntitySet="UserTypes">
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="UserType1" ColumnName="UserType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="FindaPreacherModel.Store.Split" FunctionImportName="Split">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.Split_Result">
+          <ScalarProperty Name="items" ColumnName="items" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="FindaPreacherModel.Store.SplitMulti" FunctionImportName="SplitMulti">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.SplitMulti_Result">
+          <ScalarProperty Name="ROWID" ColumnName="ROWID" />
+          <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddEvent" FunctionName="FindaPreacherModel.Store.AddEvent" />
+    <FunctionImportMapping FunctionImportName="AddEventEnquiry" FunctionName="FindaPreacherModel.Store.AddEventEnquiry">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.AddEventEnquiry_Result">
+          <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+          <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddRemoveFavouriteEvent" FunctionName="FindaPreacherModel.Store.AddRemoveFavouriteEvent">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.AddRemoveFavouriteEvent_Result">
+          <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+          <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddRemoveFavouritePreacher" FunctionName="FindaPreacherModel.Store.AddRemoveFavouritePreacher">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.AddRemoveFavouritePreacher_Result">
+          <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+          <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddUpdateNews" FunctionName="FindaPreacherModel.Store.AddUpdateNews">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.AddUpdateNews_Result">
+          <ScalarProperty Name="ResultID" ColumnName="ResultID" />
+          <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DdlGetDenominationTypes" FunctionName="FindaPreacherModel.Store.DdlGetDenominationTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.DdlGetDenominationTypes_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Txt" ColumnName="Txt" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DdlGetEventHelpServiceTypes" FunctionName="FindaPreacherModel.Store.DdlGetEventHelpServiceTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.DdlGetEventHelpServiceTypes_Result">
+          <ScalarProperty Name="HelpServiceTypeID" ColumnName="HelpServiceTypeID" />
+          <ScalarProperty Name="HelpServiceType" ColumnName="HelpServiceType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DdlGetHelpServiceTypes" FunctionName="FindaPreacherModel.Store.DdlGetHelpServiceTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.DdlGetHelpServiceTypes_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Txt" ColumnName="Txt" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DdlGetMinistryTypes" FunctionName="FindaPreacherModel.Store.DdlGetMinistryTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.DdlGetMinistryTypes_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Txt" ColumnName="Txt" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DeleteEvent" FunctionName="FindaPreacherModel.Store.DeleteEvent">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.DeleteEvent_Result">
+          <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+          <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DeleteEventComment" FunctionName="FindaPreacherModel.Store.DeleteEventComment">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.DeleteEventComment_Result">
+          <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+          <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DeleteEventEnquiry" FunctionName="FindaPreacherModel.Store.DeleteEventEnquiry">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.DeleteEventEnquiry_Result">
+          <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+          <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DeleteNews" FunctionName="FindaPreacherModel.Store.DeleteNews">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.DeleteNews_Result">
+          <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+          <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="EventDetails" FunctionName="FindaPreacherModel.Store.EventDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.EventDetails_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ContactEmailID" ColumnName="ContactEmailID" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+          <ScalarProperty Name="TicketsBooked" ColumnName="TicketsBooked" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAdminNewsList" FunctionName="FindaPreacherModel.Store.GetAdminNewsList" />
+    <FunctionImportMapping FunctionImportName="GetDdlCountries" FunctionName="FindaPreacherModel.Store.GetDdlCountries">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetDdlCountries_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Txt" ColumnName="Txt" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetEventComments" FunctionName="FindaPreacherModel.Store.GetEventComments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventComments_Result">
+          <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+          <ScalarProperty Name="CommentedByName" ColumnName="CommentedByName" />
+          <ScalarProperty Name="CommentedByEmail" ColumnName="CommentedByEmail" />
+          <ScalarProperty Name="CommentedByMobile" ColumnName="CommentedByMobile" />
+          <ScalarProperty Name="CommentedByProfilePic" ColumnName="CommentedByProfilePic" />
+          <ScalarProperty Name="IsPosted" ColumnName="IsPosted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetEventDetails" FunctionName="FindaPreacherModel.Store.GetEventDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventDetails_Result">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="MinistryTypeID" ColumnName="MinistryTypeID" />
+          <ScalarProperty Name="HelpServiceTypeIDs" ColumnName="HelpServiceTypeIDs" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="ContactEmailID" ColumnName="ContactEmailID" />
+          <ScalarProperty Name="IsBookingNeeded" ColumnName="IsBookingNeeded" />
+          <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+          <ScalarProperty Name="TicketsAvailable" ColumnName="TicketsAvailable" />
+          <ScalarProperty Name="TicketsPerPerson" ColumnName="TicketsPerPerson" />
+          <ScalarProperty Name="TicketsBooked" ColumnName="TicketsBooked" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="HelpServiceTypes" ColumnName="HelpServiceTypes" />
+          <ScalarProperty Name="MinistryType" ColumnName="MinistryType" />
+          <ScalarProperty Name="UserDISTANCE" ColumnName="UserDISTANCE" />
+          <ScalarProperty Name="PostedbyEmailID" ColumnName="PostedbyEmailID" />
+          <ScalarProperty Name="PostedbyFirstname" ColumnName="PostedbyFirstname" />
+          <ScalarProperty Name="PostedbyLastName" ColumnName="PostedbyLastName" />
+          <ScalarProperty Name="PostedbyProfilePic" ColumnName="PostedbyProfilePic" />
+          <ScalarProperty Name="PostedbyMobile" ColumnName="PostedbyMobile" />
+          <ScalarProperty Name="IsFavouriteEvent" ColumnName="IsFavouriteEvent" />
+          <ScalarProperty Name="EventFavouriteID" ColumnName="EventFavouriteID" />
+          <ScalarProperty Name="IsFavouritePreacher" ColumnName="IsFavouritePreacher" />
+          <ScalarProperty Name="PreacherFavouriteID" ColumnName="PreacherFavouriteID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetEventEnquiries" FunctionName="FindaPreacherModel.Store.GetEventEnquiries">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventEnquiries_Result">
+          <ScalarProperty Name="EnquiryID" ColumnName="EnquiryID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="HelpServiceTypeIDs" ColumnName="HelpServiceTypeIDs" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="HelpServiceTypes" ColumnName="HelpServiceTypes" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetEventImages" FunctionName="FindaPreacherModel.Store.GetEventImages">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventImages_Result">
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetEventImagesByEventIDs" FunctionName="FindaPreacherModel.Store.GetEventImagesByEventIDs">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventImagesByEventIDs_Result">
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetEvents" FunctionName="FindaPreacherModel.Store.GetEvents">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetEvents_Result">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="MinistryTypeID" ColumnName="MinistryTypeID" />
+          <ScalarProperty Name="HelpServiceTypeIDs" ColumnName="HelpServiceTypeIDs" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="ContactEmailID" ColumnName="ContactEmailID" />
+          <ScalarProperty Name="IsBookingNeeded" ColumnName="IsBookingNeeded" />
+          <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+          <ScalarProperty Name="TicketsAvailable" ColumnName="TicketsAvailable" />
+          <ScalarProperty Name="TicketsPerPerson" ColumnName="TicketsPerPerson" />
+          <ScalarProperty Name="TicketsBooked" ColumnName="TicketsBooked" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsFavouriteEvent" ColumnName="IsFavouriteEvent" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetEventsByCreatedUserID" FunctionName="FindaPreacherModel.Store.GetEventsByCreatedUserID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventsByCreatedUserID_Result">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="MinistryTypeID" ColumnName="MinistryTypeID" />
+          <ScalarProperty Name="HelpServiceTypeIDs" ColumnName="HelpServiceTypeIDs" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="ContactEmailID" ColumnName="ContactEmailID" />
+          <ScalarProperty Name="IsBookingNeeded" ColumnName="IsBookingNeeded" />
+          <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+          <ScalarProperty Name="TicketsAvailable" ColumnName="TicketsAvailable" />
+          <ScalarProperty Name="TicketsPerPerson" ColumnName="TicketsPerPerson" />
+          <ScalarProperty Name="TicketsBooked" ColumnName="TicketsBooked" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsFavouriteEvent" ColumnName="IsFavouriteEvent" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetEventVideos" FunctionName="FindaPreacherModel.Store.GetEventVideos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventVideos_Result">
+          <ScalarProperty Name="VideoID" ColumnName="VideoID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetEventVideosByEventIDs" FunctionName="FindaPreacherModel.Store.GetEventVideosByEventIDs">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventVideosByEventIDs_Result">
+          <ScalarProperty Name="VideoID" ColumnName="VideoID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetFavouriteEvents" FunctionName="FindaPreacherModel.Store.GetFavouriteEvents">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetFavouriteEvents_Result">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="MinistryTypeID" ColumnName="MinistryTypeID" />
+          <ScalarProperty Name="HelpServiceTypeIDs" ColumnName="HelpServiceTypeIDs" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="ContactEmailID" ColumnName="ContactEmailID" />
+          <ScalarProperty Name="IsBookingNeeded" ColumnName="IsBookingNeeded" />
+          <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+          <ScalarProperty Name="TicketsAvailable" ColumnName="TicketsAvailable" />
+          <ScalarProperty Name="TicketsPerPerson" ColumnName="TicketsPerPerson" />
+          <ScalarProperty Name="TicketsBooked" ColumnName="TicketsBooked" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetFavouritePreachers" FunctionName="FindaPreacherModel.Store.GetFavouritePreachers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetFavouritePreachers_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Pin" ColumnName="Pin" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="DenominationTypeId" ColumnName="DenominationTypeId" />
+          <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="OrganisationName" ColumnName="OrganisationName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetNearByEvents" FunctionName="FindaPreacherModel.Store.GetNearByEvents">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetNearByEvents_Result">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="UserDISTANCE" ColumnName="UserDISTANCE" />
+          <ScalarProperty Name="PostedbyEmailID" ColumnName="PostedbyEmailID" />
+          <ScalarProperty Name="PostedbyFirstname" ColumnName="PostedbyFirstname" />
+          <ScalarProperty Name="PostedbyLastName" ColumnName="PostedbyLastName" />
+          <ScalarProperty Name="PostedbyProfilePic" ColumnName="PostedbyProfilePic" />
+          <ScalarProperty Name="PostedbyMobile" ColumnName="PostedbyMobile" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetNewsDetails" FunctionName="FindaPreacherModel.Store.GetNewsDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetNewsDetails_Result">
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedByUserType" ColumnName="CreatedByUserType" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="statename" ColumnName="statename" />
+          <ScalarProperty Name="districtname" ColumnName="districtname" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetNewsList" FunctionName="FindaPreacherModel.Store.GetNewsList" />
+    <FunctionImportMapping FunctionImportName="GetUserDetailsById" FunctionName="FindaPreacherModel.Store.GetUserDetailsById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.GetUserDetailsById_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PostEventComment" FunctionName="FindaPreacherModel.Store.PostEventComment">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.PostEventComment_Result">
+          <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+          <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RegisterUser" FunctionName="FindaPreacherModel.Store.RegisterUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.RegisterUser_Result">
+          <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+          <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserLogin" FunctionName="FindaPreacherModel.Store.UserLogin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FindaPreacherModel.UserLogin_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_GetPaggingData" FunctionName="FindaPreacherModel.Store.USP_GetPaggingData" />
+  </EntityContainerMapping>
+</Mapping>

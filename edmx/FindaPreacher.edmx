@@ -1,0 +1,1967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FindaPreacherModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShortCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="TeleCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="UniversalDiffTime" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DenominationTypes">
+          <Key>
+            <PropertyRef Name="DenominationTypeId" />
+          </Key>
+          <Property Name="DenominationTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DenominationType" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Districts">
+          <Key>
+            <PropertyRef Name="DistrictID" />
+          </Key>
+          <Property Name="DistrictID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateID" Type="bigint" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="DistrictName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventComments">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="bigint" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="PostedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventEnquiries">
+          <Key>
+            <PropertyRef Name="EnquiryID" />
+          </Key>
+          <Property Name="EnquiryID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="bigint" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="HelpServiceTypeIDs" Type="nvarchar(max)" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventHelpService">
+          <Key>
+            <PropertyRef Name="EventHelpServiceID" />
+          </Key>
+          <Property Name="EventHelpServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="HelpServiceTypeID" Type="int" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IsPersonal" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EventImages">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="bigint" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="MinistryTypeID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="HelpServiceTypeIDs" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Location" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="200" />
+          <Property Name="ContactPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactEmailID" Type="nvarchar" MaxLength="400" />
+          <Property Name="IsBookingNeeded" Type="int" Nullable="false" />
+          <Property Name="TicketPrice" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TicketsAvailable" Type="bigint" Nullable="false" />
+          <Property Name="TicketsPerPerson" Type="bigint" Nullable="false" />
+          <Property Name="TicketsBooked" Type="bigint" Nullable="false" />
+          <Property Name="Status" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventVideos">
+          <Key>
+            <PropertyRef Name="VideoID" />
+          </Key>
+          <Property Name="VideoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="bigint" Nullable="false" />
+          <Property Name="VideoUrl" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FavouriteEvents">
+          <Key>
+            <PropertyRef Name="FavouriteID" />
+          </Key>
+          <Property Name="FavouriteID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="bigint" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FavouritePreachers">
+          <Key>
+            <PropertyRef Name="FavouriteID" />
+          </Key>
+          <Property Name="FavouriteID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PreacherID" Type="bigint" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HelpServiceTypes">
+          <Key>
+            <PropertyRef Name="HelpServiceTypeID" />
+          </Key>
+          <Property Name="HelpServiceTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HelpServiceType" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MinistryTypes">
+          <Key>
+            <PropertyRef Name="MinistryTypeID" />
+          </Key>
+          <Property Name="MinistryTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinistryType" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar" MaxLength="100" />
+          <Property Name="Location" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Latitude" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="Longitude" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="CountryID" Type="int" />
+          <Property Name="StateID" Type="bigint" />
+          <Property Name="DistrictID" Type="bigint" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserType" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="RegionID" Type="bigint" Nullable="false" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pin" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="30" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="30" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="ProfilePic" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserTypeID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="DenominationTypeId" Type="int" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="140" />
+          <Property Name="Details" Type="nvarchar(max)" />
+          <Property Name="OrganisationName" Type="nvarchar" MaxLength="140" />
+        </EntityType>
+        <EntityType Name="UserTypes">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Function Name="AddEvent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EventID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="MinistryTypeID" Type="int" Mode="In" />
+          <Parameter Name="HelpServiceTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Location" Type="nvarchar" Mode="In" />
+          <Parameter Name="Latitude" Type="nvarchar" Mode="In" />
+          <Parameter Name="Longitude" Type="nvarchar" Mode="In" />
+          <Parameter Name="StartDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="EndDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContactPerson" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContactPhone" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContactEmailID" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsBookingNeeded" Type="int" Mode="In" />
+          <Parameter Name="TicketPrice" Type="nvarchar" Mode="In" />
+          <Parameter Name="TicketsAvailable" Type="bigint" Mode="In" />
+          <Parameter Name="TicketsPerPerson" Type="bigint" Mode="In" />
+          <Parameter Name="TicketsBooked" Type="bigint" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="ModifiedDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="AddEventEnquiry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EventID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="HelpServiceTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Message" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="AddRemoveFavouriteEvent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EventID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="AddRemoveFavouritePreacher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PreacherID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="AddUpdateNews" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NewsID" Type="bigint" Mode="In" />
+          <Parameter Name="Title" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Image" Type="nvarchar" Mode="In" />
+          <Parameter Name="Location" Type="nvarchar" Mode="In" />
+          <Parameter Name="Latitude" Type="nvarchar" Mode="In" />
+          <Parameter Name="Longitude" Type="nvarchar" Mode="In" />
+          <Parameter Name="CountryID" Type="int" Mode="In" />
+          <Parameter Name="StateID" Type="int" Mode="In" />
+          <Parameter Name="DistrictID" Type="int" Mode="In" />
+          <Parameter Name="City" Type="nvarchar" Mode="In" />
+          <Parameter Name="DisplayOrder" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+          <Parameter Name="CreatedByUserType" Type="int" Mode="In" />
+          <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="convertutcdatetime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="datetime" />
+        <Function Name="DdlGetDenominationTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DdlGetEventHelpServiceTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EventID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DdlGetHelpServiceTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DdlGetMinistryTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DeleteEvent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EventID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DeleteEventComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CommentID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DeleteEventEnquiry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EnquiryID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DeleteNews" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NewsID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="EventDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EventID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="geolocationdistancecaluclation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="real">
+          <Parameter Name="mlat" Type="real" Mode="In" />
+          <Parameter Name="mlong" Type="real" Mode="In" />
+          <Parameter Name="clat" Type="real" Mode="In" />
+          <Parameter Name="clong" Type="real" Mode="In" />
+        </Function>
+        <Function Name="GetAdminNewsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CountryID" Type="int" Mode="In" />
+          <Parameter Name="StateID" Type="bigint" Mode="In" />
+          <Parameter Name="DistrictID" Type="bigint" Mode="In" />
+          <Parameter Name="City" Type="nvarchar" Mode="In" />
+          <Parameter Name="Location" Type="nvarchar" Mode="In" />
+          <Parameter Name="FromDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="ToDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="Searchstr" Type="nvarchar" Mode="In" />
+          <Parameter Name="SortBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetDdlCountries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetEventComments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EventID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetEventDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="EventID" Type="bigint" Mode="In" />
+          <Parameter Name="Latitude" Type="decimal" Mode="In" />
+          <Parameter Name="Longitude" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="GetEventEnquiries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetEventImages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EventID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetEventImagesByEventIDs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EventIDs" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="GetEvents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetEventsByCreatedUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CreatedUserID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetEventVideos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EventID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetEventVideosByEventIDs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EventIDs" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="GetFavouriteEvents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetFavouritePreachers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetNearByEvents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Latitude" Type="decimal" Mode="In" />
+          <Parameter Name="Longitude" Type="decimal" Mode="In" />
+          <Parameter Name="Radius" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetNewsDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NewsID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetNewsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CountryID" Type="int" Mode="In" />
+          <Parameter Name="StateID" Type="bigint" Mode="In" />
+          <Parameter Name="DistrictID" Type="bigint" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="Searchstr" Type="nvarchar" Mode="In" />
+          <Parameter Name="SortBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetUserDetailsById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="PostEventComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EventID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="Comment" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="RegisterUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pin" Type="nvarchar" Mode="In" />
+          <Parameter Name="CountryID" Type="int" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Longitude" Type="nvarchar" Mode="In" />
+          <Parameter Name="Latitude" Type="nvarchar" Mode="In" />
+          <Parameter Name="City" Type="nvarchar" Mode="In" />
+          <Parameter Name="PostCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserTypeID" Type="int" Mode="In" />
+          <Parameter Name="DenominationTypeId" Type="int" Mode="In" />
+          <Parameter Name="Qualification" Type="nvarchar" Mode="In" />
+          <Parameter Name="Details" Type="nvarchar" Mode="In" />
+          <Parameter Name="OrganisationName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Split" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="String" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Delimiter" Type="char" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="items" Type="nvarchar(max)" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="SplitMulti" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LIST" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="DELIMITER" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="ROWID" Type="smallint" Nullable="false" />
+                <Property Name="VALUE" Type="varchar(max)" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="UserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pin" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="USP_GetPaggingData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="Query" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="FindaPreacherModelStoreContainer">
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DenominationTypes" EntityType="Self.DenominationTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventComments" EntityType="Self.EventComments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventEnquiries" EntityType="Self.EventEnquiries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventHelpService" EntityType="Self.EventHelpService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventImages" EntityType="Self.EventImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventVideos" EntityType="Self.EventVideos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavouriteEvents" EntityType="Self.FavouriteEvents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavouritePreachers" EntityType="Self.FavouritePreachers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HelpServiceTypes" EntityType="Self.HelpServiceTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MinistryTypes" EntityType="Self.MinistryTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FindaPreacherModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="Split_Result">
+          <Property Name="items" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <ComplexType Name="SplitMulti_Result">
+          <Property Name="ROWID" Type="Int16" Nullable="false" />
+          <Property Name="VALUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TeleCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UniversalDiffTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DenominationType">
+          <Key>
+            <PropertyRef Name="DenominationTypeId" />
+          </Key>
+          <Property Name="DenominationTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DenominationType1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="DistrictID" />
+          </Key>
+          <Property Name="DistrictID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateID" Type="Int64" Nullable="false" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="DistrictName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventComment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int64" Nullable="false" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="EventEnquiry">
+          <Key>
+            <PropertyRef Name="EnquiryID" />
+          </Key>
+          <Property Name="EnquiryID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int64" Nullable="false" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="HelpServiceTypeIDs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="EventHelpService">
+          <Key>
+            <PropertyRef Name="EventHelpServiceID" />
+          </Key>
+          <Property Name="EventHelpServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="HelpServiceTypeID" Type="Int32" />
+          <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="IsPersonal" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="EventImage">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int64" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MinistryTypeID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="HelpServiceTypeIDs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ContactPerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactEmailID" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="IsBookingNeeded" Type="Int32" Nullable="false" />
+          <Property Name="TicketPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TicketsAvailable" Type="Int64" Nullable="false" />
+          <Property Name="TicketsPerPerson" Type="Int64" Nullable="false" />
+          <Property Name="TicketsBooked" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="EventVideo">
+          <Key>
+            <PropertyRef Name="VideoID" />
+          </Key>
+          <Property Name="VideoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int64" Nullable="false" />
+          <Property Name="VideoUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FavouriteEvent">
+          <Key>
+            <PropertyRef Name="FavouriteID" />
+          </Key>
+          <Property Name="FavouriteID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int64" Nullable="false" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FavouritePreacher">
+          <Key>
+            <PropertyRef Name="FavouriteID" />
+          </Key>
+          <Property Name="FavouriteID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PreacherID" Type="Int64" Nullable="false" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="HelpServiceType">
+          <Key>
+            <PropertyRef Name="HelpServiceTypeID" />
+          </Key>
+          <Property Name="HelpServiceTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HelpServiceType1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="MinistryType">
+          <Key>
+            <PropertyRef Name="MinistryTypeID" />
+          </Key>
+          <Property Name="MinistryTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MinistryType1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Longitude" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="StateID" Type="Int64" />
+          <Property Name="DistrictID" Type="Int64" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserType" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="RegionID" Type="Int64" Nullable="false" />
+          <Property Name="StateName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pin" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ProfilePic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DenominationTypeId" Type="Int32" />
+          <Property Name="Qualification" Type="String" MaxLength="140" FixedLength="false" Unicode="true" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrganisationName" Type="String" MaxLength="140" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="FindaPreacherEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="DenominationTypes" EntityType="Self.DenominationType" />
+          <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="EventComments" EntityType="Self.EventComment" />
+          <EntitySet Name="EventEnquiries" EntityType="Self.EventEnquiry" />
+          <EntitySet Name="EventHelpServices" EntityType="Self.EventHelpService" />
+          <EntitySet Name="EventImages" EntityType="Self.EventImage" />
+          <EntitySet Name="Events" EntityType="Self.Event" />
+          <EntitySet Name="EventVideos" EntityType="Self.EventVideo" />
+          <EntitySet Name="FavouriteEvents" EntityType="Self.FavouriteEvent" />
+          <EntitySet Name="FavouritePreachers" EntityType="Self.FavouritePreacher" />
+          <EntitySet Name="HelpServiceTypes" EntityType="Self.HelpServiceType" />
+          <EntitySet Name="MinistryTypes" EntityType="Self.MinistryType" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <FunctionImport Name="Split" IsComposable="true" ReturnType="Collection(FindaPreacherModel.Split_Result)">
+            <Parameter Name="String" Mode="In" Type="String" />
+            <Parameter Name="Delimiter" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SplitMulti" IsComposable="true" ReturnType="Collection(FindaPreacherModel.SplitMulti_Result)">
+            <Parameter Name="LIST" Mode="In" Type="String" />
+            <Parameter Name="DELIMITER" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddEvent">
+            <Parameter Name="EventID" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="MinistryTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="HelpServiceTypeIDs" Mode="In" Type="String" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="Latitude" Mode="In" Type="String" />
+            <Parameter Name="Longitude" Mode="In" Type="String" />
+            <Parameter Name="StartDate" Mode="In" Type="String" />
+            <Parameter Name="EndDate" Mode="In" Type="String" />
+            <Parameter Name="ContactPerson" Mode="In" Type="String" />
+            <Parameter Name="ContactPhone" Mode="In" Type="String" />
+            <Parameter Name="ContactEmailID" Mode="In" Type="String" />
+            <Parameter Name="IsBookingNeeded" Mode="In" Type="Int32" />
+            <Parameter Name="TicketPrice" Mode="In" Type="String" />
+            <Parameter Name="TicketsAvailable" Mode="In" Type="Int64" />
+            <Parameter Name="TicketsPerPerson" Mode="In" Type="Int64" />
+            <Parameter Name="TicketsBooked" Mode="In" Type="Int64" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="AddEventEnquiry" ReturnType="Collection(FindaPreacherModel.AddEventEnquiry_Result)">
+            <Parameter Name="EventID" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+            <Parameter Name="HelpServiceTypeIDs" Mode="In" Type="String" />
+            <Parameter Name="Message" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddRemoveFavouriteEvent" ReturnType="Collection(FindaPreacherModel.AddRemoveFavouriteEvent_Result)">
+            <Parameter Name="EventID" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="AddRemoveFavouritePreacher" ReturnType="Collection(FindaPreacherModel.AddRemoveFavouritePreacher_Result)">
+            <Parameter Name="PreacherID" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="AddUpdateNews" ReturnType="Collection(FindaPreacherModel.AddUpdateNews_Result)">
+            <Parameter Name="NewsID" Mode="In" Type="Int64" />
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Image" Mode="In" Type="String" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="Latitude" Mode="In" Type="String" />
+            <Parameter Name="Longitude" Mode="In" Type="String" />
+            <Parameter Name="CountryID" Mode="In" Type="Int32" />
+            <Parameter Name="StateID" Mode="In" Type="Int32" />
+            <Parameter Name="DistrictID" Mode="In" Type="Int32" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="DisplayOrder" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedByUserType" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DdlGetDenominationTypes" ReturnType="Collection(FindaPreacherModel.DdlGetDenominationTypes_Result)" />
+          <FunctionImport Name="DdlGetEventHelpServiceTypes" ReturnType="Collection(FindaPreacherModel.DdlGetEventHelpServiceTypes_Result)">
+            <Parameter Name="EventID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DdlGetHelpServiceTypes" ReturnType="Collection(FindaPreacherModel.DdlGetHelpServiceTypes_Result)" />
+          <FunctionImport Name="DdlGetMinistryTypes" ReturnType="Collection(FindaPreacherModel.DdlGetMinistryTypes_Result)" />
+          <FunctionImport Name="DeleteEvent" ReturnType="Collection(FindaPreacherModel.DeleteEvent_Result)">
+            <Parameter Name="EventID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteEventComment" ReturnType="Collection(FindaPreacherModel.DeleteEventComment_Result)">
+            <Parameter Name="CommentID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteEventEnquiry" ReturnType="Collection(FindaPreacherModel.DeleteEventEnquiry_Result)">
+            <Parameter Name="EnquiryID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteNews" ReturnType="Collection(FindaPreacherModel.DeleteNews_Result)">
+            <Parameter Name="NewsID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="EventDetails" ReturnType="Collection(FindaPreacherModel.EventDetails_Result)">
+            <Parameter Name="EventID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAdminNewsList">
+            <Parameter Name="CountryID" Mode="In" Type="Int32" />
+            <Parameter Name="StateID" Mode="In" Type="Int64" />
+            <Parameter Name="DistrictID" Mode="In" Type="Int64" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="FromDate" Mode="In" Type="String" />
+            <Parameter Name="ToDate" Mode="In" Type="String" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="Searchstr" Mode="In" Type="String" />
+            <Parameter Name="SortBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetDdlCountries" ReturnType="Collection(FindaPreacherModel.GetDdlCountries_Result)" />
+          <FunctionImport Name="GetEventComments" ReturnType="Collection(FindaPreacherModel.GetEventComments_Result)">
+            <Parameter Name="EventID" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetEventDetails" ReturnType="Collection(FindaPreacherModel.GetEventDetails_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+            <Parameter Name="EventID" Mode="In" Type="Int64" />
+            <Parameter Name="Latitude" Mode="In" Type="Decimal" />
+            <Parameter Name="Longitude" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="GetEventEnquiries" ReturnType="Collection(FindaPreacherModel.GetEventEnquiries_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetEventImages" ReturnType="Collection(FindaPreacherModel.GetEventImages_Result)">
+            <Parameter Name="EventID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetEventImagesByEventIDs" ReturnType="Collection(FindaPreacherModel.GetEventImagesByEventIDs_Result)">
+            <Parameter Name="EventIDs" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetEvents" ReturnType="Collection(FindaPreacherModel.GetEvents_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetEventsByCreatedUserID" ReturnType="Collection(FindaPreacherModel.GetEventsByCreatedUserID_Result)">
+            <Parameter Name="CreatedUserID" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetEventVideos" ReturnType="Collection(FindaPreacherModel.GetEventVideos_Result)">
+            <Parameter Name="EventID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetEventVideosByEventIDs" ReturnType="Collection(FindaPreacherModel.GetEventVideosByEventIDs_Result)">
+            <Parameter Name="EventIDs" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetFavouriteEvents" ReturnType="Collection(FindaPreacherModel.GetFavouriteEvents_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetFavouritePreachers" ReturnType="Collection(FindaPreacherModel.GetFavouritePreachers_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetNearByEvents" ReturnType="Collection(FindaPreacherModel.GetNearByEvents_Result)">
+            <Parameter Name="Latitude" Mode="In" Type="Decimal" />
+            <Parameter Name="Longitude" Mode="In" Type="Decimal" />
+            <Parameter Name="Radius" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetNewsDetails" ReturnType="Collection(FindaPreacherModel.GetNewsDetails_Result)">
+            <Parameter Name="NewsID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetNewsList">
+            <Parameter Name="CountryID" Mode="In" Type="Int32" />
+            <Parameter Name="StateID" Mode="In" Type="Int64" />
+            <Parameter Name="DistrictID" Mode="In" Type="Int64" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="Searchstr" Mode="In" Type="String" />
+            <Parameter Name="SortBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserDetailsById" ReturnType="Collection(FindaPreacherModel.GetUserDetailsById_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="PostEventComment" ReturnType="Collection(FindaPreacherModel.PostEventComment_Result)">
+            <Parameter Name="EventID" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RegisterUser" ReturnType="Collection(FindaPreacherModel.RegisterUser_Result)">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Pin" Mode="In" Type="String" />
+            <Parameter Name="CountryID" Mode="In" Type="Int32" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Longitude" Mode="In" Type="String" />
+            <Parameter Name="Latitude" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="PostCode" Mode="In" Type="String" />
+            <Parameter Name="UserTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="DenominationTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="Qualification" Mode="In" Type="String" />
+            <Parameter Name="Details" Mode="In" Type="String" />
+            <Parameter Name="OrganisationName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UserLogin" ReturnType="Collection(FindaPreacherModel.UserLogin_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Pin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_GetPaggingData">
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="Query" Mode="InOut" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="AddEventEnquiry_Result">
+          <Property Type="Int64" Name="ResultId" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="AddRemoveFavouriteEvent_Result">
+          <Property Type="Int64" Name="ResultId" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="AddRemoveFavouritePreacher_Result">
+          <Property Type="Int64" Name="ResultId" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="AddUpdateNews_Result">
+          <Property Type="Int64" Name="ResultID" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="false" MaxLength="34" />
+        </ComplexType>
+        <ComplexType Name="DdlGetDenominationTypes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Txt" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="DdlGetEventHelpServiceTypes_Result">
+          <Property Type="Int32" Name="HelpServiceTypeID" Nullable="false" />
+          <Property Type="String" Name="HelpServiceType" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="DdlGetHelpServiceTypes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Txt" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="DdlGetMinistryTypes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Txt" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="DeleteEvent_Result">
+          <Property Type="Int64" Name="ResultId" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="DeleteEventComment_Result">
+          <Property Type="Int64" Name="ResultId" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="DeleteEventEnquiry_Result">
+          <Property Type="Int64" Name="ResultId" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="DeleteNews_Result">
+          <Property Type="Int32" Name="ResultId" Nullable="false" />
+          <Property Type="String" Name="ResultMessage" Nullable="false" MaxLength="26" />
+        </ComplexType>
+        <ComplexType Name="EventDetails_Result">
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="UserTypeID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Image" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="1000" />
+          <Property Type="Double" Name="Latitude" Nullable="true" />
+          <Property Type="Double" Name="Longitude" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ContactEmailID" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="ContactPhone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="TicketPrice" Nullable="false" MaxLength="50" />
+          <Property Type="Int64" Name="TicketsBooked" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetDdlCountries_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Txt" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GetEventComments_Result">
+          <Property Type="Int64" Name="CommentID" Nullable="false" />
+          <Property Type="Int64" Name="EventID" Nullable="false" />
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Comment" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="PostedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CommentedByName" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="CommentedByEmail" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="CommentedByMobile" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="CommentedByProfilePic" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="IsPosted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetEventDetails_Result">
+          <Property Type="Int64" Name="EventID" Nullable="false" />
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="MinistryTypeID" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="HelpServiceTypeIDs" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="1000" />
+          <Property Type="Double" Name="Latitude" Nullable="true" />
+          <Property Type="Double" Name="Longitude" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ContactPhone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ContactEmailID" Nullable="true" MaxLength="400" />
+          <Property Type="Int32" Name="IsBookingNeeded" Nullable="false" />
+          <Property Type="String" Name="TicketPrice" Nullable="false" MaxLength="50" />
+          <Property Type="Int64" Name="TicketsAvailable" Nullable="false" />
+          <Property Type="Int64" Name="TicketsPerPerson" Nullable="false" />
+          <Property Type="Int64" Name="TicketsBooked" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="HelpServiceTypes" Nullable="true" />
+          <Property Type="String" Name="MinistryType" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="UserDISTANCE" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="PostedbyEmailID" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="PostedbyFirstname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PostedbyLastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PostedbyProfilePic" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PostedbyMobile" Nullable="false" MaxLength="20" />
+          <Property Type="Boolean" Name="IsFavouriteEvent" Nullable="true" />
+          <Property Type="Int64" Name="EventFavouriteID" Nullable="true" />
+          <Property Type="Int32" Name="IsFavouritePreacher" Nullable="false" />
+          <Property Type="Int64" Name="PreacherFavouriteID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetEventEnquiries_Result">
+          <Property Type="Int64" Name="EnquiryID" Nullable="false" />
+          <Property Type="Int64" Name="EventID" Nullable="false" />
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="HelpServiceTypeIDs" Nullable="true" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="HelpServiceTypes" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="ProfilePic" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CountryID" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="Longitude" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Latitude" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PostCode" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="GetEventImages_Result">
+          <Property Type="Int64" Name="ImageID" Nullable="false" />
+          <Property Type="Int64" Name="EventID" Nullable="false" />
+          <Property Type="String" Name="Image" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetEventImagesByEventIDs_Result">
+          <Property Type="Int64" Name="ImageID" Nullable="false" />
+          <Property Type="Int64" Name="EventID" Nullable="false" />
+          <Property Type="String" Name="Image" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetEvents_Result">
+          <Property Type="Int64" Name="EventID" Nullable="false" />
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="MinistryTypeID" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="HelpServiceTypeIDs" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="1000" />
+          <Property Type="Double" Name="Latitude" Nullable="true" />
+          <Property Type="Double" Name="Longitude" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ContactPhone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ContactEmailID" Nullable="true" MaxLength="400" />
+          <Property Type="Int32" Name="IsBookingNeeded" Nullable="false" />
+          <Property Type="String" Name="TicketPrice" Nullable="false" MaxLength="50" />
+          <Property Type="Int64" Name="TicketsAvailable" Nullable="false" />
+          <Property Type="Int64" Name="TicketsPerPerson" Nullable="false" />
+          <Property Type="Int64" Name="TicketsBooked" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="IsFavouriteEvent" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetEventsByCreatedUserID_Result">
+          <Property Type="Int64" Name="EventID" Nullable="false" />
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="MinistryTypeID" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="HelpServiceTypeIDs" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="1000" />
+          <Property Type="Double" Name="Latitude" Nullable="true" />
+          <Property Type="Double" Name="Longitude" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ContactPhone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ContactEmailID" Nullable="true" MaxLength="400" />
+          <Property Type="Int32" Name="IsBookingNeeded" Nullable="false" />
+          <Property Type="String" Name="TicketPrice" Nullable="false" MaxLength="50" />
+          <Property Type="Int64" Name="TicketsAvailable" Nullable="false" />
+          <Property Type="Int64" Name="TicketsPerPerson" Nullable="false" />
+          <Property Type="Int64" Name="TicketsBooked" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="IsFavouriteEvent" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetEventVideos_Result">
+          <Property Type="Int64" Name="VideoID" Nullable="false" />
+          <Property Type="Int64" Name="EventID" Nullable="false" />
+          <Property Type="String" Name="VideoUrl" Nullable="false" MaxLength="500" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetEventVideosByEventIDs_Result">
+          <Property Type="Int64" Name="VideoID" Nullable="false" />
+          <Property Type="Int64" Name="EventID" Nullable="false" />
+          <Property Type="String" Name="VideoUrl" Nullable="false" MaxLength="500" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetFavouriteEvents_Result">
+          <Property Type="Int64" Name="EventID" Nullable="false" />
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="MinistryTypeID" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="HelpServiceTypeIDs" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="1000" />
+          <Property Type="Double" Name="Latitude" Nullable="true" />
+          <Property Type="Double" Name="Longitude" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ContactPhone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ContactEmailID" Nullable="true" MaxLength="400" />
+          <Property Type="Int32" Name="IsBookingNeeded" Nullable="false" />
+          <Property Type="String" Name="TicketPrice" Nullable="false" MaxLength="50" />
+          <Property Type="Int64" Name="TicketsAvailable" Nullable="false" />
+          <Property Type="Int64" Name="TicketsPerPerson" Nullable="false" />
+          <Property Type="Int64" Name="TicketsBooked" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetFavouritePreachers_Result">
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Pin" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="CountryID" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="Longitude" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Latitude" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PostCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ProfilePic" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="UserTypeID" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="DenominationTypeId" Nullable="true" />
+          <Property Type="String" Name="Qualification" Nullable="true" MaxLength="140" />
+          <Property Type="String" Name="Details" Nullable="true" />
+          <Property Type="String" Name="OrganisationName" Nullable="true" MaxLength="140" />
+        </ComplexType>
+        <ComplexType Name="GetNearByEvents_Result">
+          <Property Type="Int64" Name="EventID" Nullable="false" />
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="1000" />
+          <Property Type="Double" Name="Latitude" Nullable="true" />
+          <Property Type="Double" Name="Longitude" Nullable="true" />
+          <Property Type="String" Name="UserDISTANCE" Nullable="true" MaxLength="33" />
+          <Property Type="String" Name="PostedbyEmailID" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="PostedbyFirstname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PostedbyLastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PostedbyProfilePic" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PostedbyMobile" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetNewsDetails_Result">
+          <Property Type="Int64" Name="NewsID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="4000" />
+          <Property Type="Decimal" Name="Latitude" Nullable="true" Precision="18" Scale="6" />
+          <Property Type="Decimal" Name="Longitude" Nullable="true" Precision="18" Scale="6" />
+          <Property Type="Int32" Name="CountryID" Nullable="true" />
+          <Property Type="Int64" Name="StateID" Nullable="true" />
+          <Property Type="Int64" Name="DistrictID" Nullable="true" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="DisplayOrder" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="CreatedByUserType" Nullable="false" />
+          <Property Type="Int64" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="country" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="statename" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="districtname" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GetUserDetailsById_Result">
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="ProfilePic" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PostCode" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="CountryID" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="UserTypeID" Nullable="false" />
+          <Property Type="String" Name="UserType" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="Longitude" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Latitude" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="PostEventComment_Result">
+          <Property Type="Int64" Name="ResultId" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="RegisterUser_Result">
+          <Property Type="Int64" Name="ResultId" Nullable="true" />
+          <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="UserLogin_Result">
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="ProfilePic" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CountryID" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="UserTypeID" Nullable="false" />
+          <Property Type="String" Name="UserType" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="Longitude" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Latitude" Nullable="true" MaxLength="30" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FindaPreacherModelStoreContainer" CdmEntityContainer="FindaPreacherEntities2">
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="FindaPreacherModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Country1" ColumnName="Country" />
+                <ScalarProperty Name="ShortCode" ColumnName="ShortCode" />
+                <ScalarProperty Name="TeleCode" ColumnName="TeleCode" />
+                <ScalarProperty Name="UniversalDiffTime" ColumnName="UniversalDiffTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DenominationTypes">
+            <EntityTypeMapping TypeName="FindaPreacherModel.DenominationType">
+              <MappingFragment StoreEntitySet="DenominationTypes">
+                <ScalarProperty Name="DenominationTypeId" ColumnName="DenominationTypeId" />
+                <ScalarProperty Name="DenominationType1" ColumnName="DenominationType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="FindaPreacherModel.District">
+              <MappingFragment StoreEntitySet="Districts">
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventComments">
+            <EntityTypeMapping TypeName="FindaPreacherModel.EventComment">
+              <MappingFragment StoreEntitySet="EventComments">
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventEnquiries">
+            <EntityTypeMapping TypeName="FindaPreacherModel.EventEnquiry">
+              <MappingFragment StoreEntitySet="EventEnquiries">
+                <ScalarProperty Name="EnquiryID" ColumnName="EnquiryID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="HelpServiceTypeIDs" ColumnName="HelpServiceTypeIDs" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventHelpServices">
+            <EntityTypeMapping TypeName="FindaPreacherModel.EventHelpService">
+              <MappingFragment StoreEntitySet="EventHelpService">
+                <ScalarProperty Name="EventHelpServiceID" ColumnName="EventHelpServiceID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="HelpServiceTypeID" ColumnName="HelpServiceTypeID" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="IsPersonal" ColumnName="IsPersonal" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventImages">
+            <EntityTypeMapping TypeName="FindaPreacherModel.EventImage">
+              <MappingFragment StoreEntitySet="EventImages">
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="FindaPreacherModel.Event">
+              <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MinistryTypeID" ColumnName="MinistryTypeID" />
+                <ScalarProperty Name="HelpServiceTypeIDs" ColumnName="HelpServiceTypeIDs" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ContactEmailID" ColumnName="ContactEmailID" />
+                <ScalarProperty Name="IsBookingNeeded" ColumnName="IsBookingNeeded" />
+                <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+                <ScalarProperty Name="TicketsAvailable" ColumnName="TicketsAvailable" />
+                <ScalarProperty Name="TicketsPerPerson" ColumnName="TicketsPerPerson" />
+                <ScalarProperty Name="TicketsBooked" ColumnName="TicketsBooked" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventVideos">
+            <EntityTypeMapping TypeName="FindaPreacherModel.EventVideo">
+              <MappingFragment StoreEntitySet="EventVideos">
+                <ScalarProperty Name="VideoID" ColumnName="VideoID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavouriteEvents">
+            <EntityTypeMapping TypeName="FindaPreacherModel.FavouriteEvent">
+              <MappingFragment StoreEntitySet="FavouriteEvents">
+                <ScalarProperty Name="FavouriteID" ColumnName="FavouriteID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavouritePreachers">
+            <EntityTypeMapping TypeName="FindaPreacherModel.FavouritePreacher">
+              <MappingFragment StoreEntitySet="FavouritePreachers">
+                <ScalarProperty Name="FavouriteID" ColumnName="FavouriteID" />
+                <ScalarProperty Name="PreacherID" ColumnName="PreacherID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HelpServiceTypes">
+            <EntityTypeMapping TypeName="FindaPreacherModel.HelpServiceType">
+              <MappingFragment StoreEntitySet="HelpServiceTypes">
+                <ScalarProperty Name="HelpServiceTypeID" ColumnName="HelpServiceTypeID" />
+                <ScalarProperty Name="HelpServiceType1" ColumnName="HelpServiceType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MinistryTypes">
+            <EntityTypeMapping TypeName="FindaPreacherModel.MinistryType">
+              <MappingFragment StoreEntitySet="MinistryTypes">
+                <ScalarProperty Name="MinistryTypeID" ColumnName="MinistryTypeID" />
+                <ScalarProperty Name="MinistryType1" ColumnName="MinistryType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="FindaPreacherModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedByUserType" ColumnName="CreatedByUserType" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="FindaPreacherModel.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="FindaPreacherModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Pin" ColumnName="Pin" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="DenominationTypeId" ColumnName="DenominationTypeId" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="OrganisationName" ColumnName="OrganisationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="FindaPreacherModel.UserType">
+              <MappingFragment StoreEntitySet="UserTypes">
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="UserType1" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="FindaPreacherModel.Store.Split" FunctionImportName="Split">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.Split_Result">
+                <ScalarProperty Name="items" ColumnName="items" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="FindaPreacherModel.Store.SplitMulti" FunctionImportName="SplitMulti">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.SplitMulti_Result">
+                <ScalarProperty Name="ROWID" ColumnName="ROWID" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddEvent" FunctionName="FindaPreacherModel.Store.AddEvent" />
+          <FunctionImportMapping FunctionImportName="AddEventEnquiry" FunctionName="FindaPreacherModel.Store.AddEventEnquiry">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.AddEventEnquiry_Result">
+                <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddRemoveFavouriteEvent" FunctionName="FindaPreacherModel.Store.AddRemoveFavouriteEvent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.AddRemoveFavouriteEvent_Result">
+                <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddRemoveFavouritePreacher" FunctionName="FindaPreacherModel.Store.AddRemoveFavouritePreacher">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.AddRemoveFavouritePreacher_Result">
+                <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddUpdateNews" FunctionName="FindaPreacherModel.Store.AddUpdateNews">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.AddUpdateNews_Result">
+                <ScalarProperty Name="ResultID" ColumnName="ResultID" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DdlGetDenominationTypes" FunctionName="FindaPreacherModel.Store.DdlGetDenominationTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.DdlGetDenominationTypes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Txt" ColumnName="Txt" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DdlGetEventHelpServiceTypes" FunctionName="FindaPreacherModel.Store.DdlGetEventHelpServiceTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.DdlGetEventHelpServiceTypes_Result">
+                <ScalarProperty Name="HelpServiceTypeID" ColumnName="HelpServiceTypeID" />
+                <ScalarProperty Name="HelpServiceType" ColumnName="HelpServiceType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DdlGetHelpServiceTypes" FunctionName="FindaPreacherModel.Store.DdlGetHelpServiceTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.DdlGetHelpServiceTypes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Txt" ColumnName="Txt" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DdlGetMinistryTypes" FunctionName="FindaPreacherModel.Store.DdlGetMinistryTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.DdlGetMinistryTypes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Txt" ColumnName="Txt" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteEvent" FunctionName="FindaPreacherModel.Store.DeleteEvent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.DeleteEvent_Result">
+                <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteEventComment" FunctionName="FindaPreacherModel.Store.DeleteEventComment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.DeleteEventComment_Result">
+                <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteEventEnquiry" FunctionName="FindaPreacherModel.Store.DeleteEventEnquiry">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.DeleteEventEnquiry_Result">
+                <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteNews" FunctionName="FindaPreacherModel.Store.DeleteNews">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.DeleteNews_Result">
+                <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EventDetails" FunctionName="FindaPreacherModel.Store.EventDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.EventDetails_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactEmailID" ColumnName="ContactEmailID" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+                <ScalarProperty Name="TicketsBooked" ColumnName="TicketsBooked" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAdminNewsList" FunctionName="FindaPreacherModel.Store.GetAdminNewsList" />
+          <FunctionImportMapping FunctionImportName="GetDdlCountries" FunctionName="FindaPreacherModel.Store.GetDdlCountries">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetDdlCountries_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Txt" ColumnName="Txt" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEventComments" FunctionName="FindaPreacherModel.Store.GetEventComments">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventComments_Result">
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="CommentedByName" ColumnName="CommentedByName" />
+                <ScalarProperty Name="CommentedByEmail" ColumnName="CommentedByEmail" />
+                <ScalarProperty Name="CommentedByMobile" ColumnName="CommentedByMobile" />
+                <ScalarProperty Name="CommentedByProfilePic" ColumnName="CommentedByProfilePic" />
+                <ScalarProperty Name="IsPosted" ColumnName="IsPosted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEventDetails" FunctionName="FindaPreacherModel.Store.GetEventDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventDetails_Result">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MinistryTypeID" ColumnName="MinistryTypeID" />
+                <ScalarProperty Name="HelpServiceTypeIDs" ColumnName="HelpServiceTypeIDs" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ContactEmailID" ColumnName="ContactEmailID" />
+                <ScalarProperty Name="IsBookingNeeded" ColumnName="IsBookingNeeded" />
+                <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+                <ScalarProperty Name="TicketsAvailable" ColumnName="TicketsAvailable" />
+                <ScalarProperty Name="TicketsPerPerson" ColumnName="TicketsPerPerson" />
+                <ScalarProperty Name="TicketsBooked" ColumnName="TicketsBooked" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="HelpServiceTypes" ColumnName="HelpServiceTypes" />
+                <ScalarProperty Name="MinistryType" ColumnName="MinistryType" />
+                <ScalarProperty Name="UserDISTANCE" ColumnName="UserDISTANCE" />
+                <ScalarProperty Name="PostedbyEmailID" ColumnName="PostedbyEmailID" />
+                <ScalarProperty Name="PostedbyFirstname" ColumnName="PostedbyFirstname" />
+                <ScalarProperty Name="PostedbyLastName" ColumnName="PostedbyLastName" />
+                <ScalarProperty Name="PostedbyProfilePic" ColumnName="PostedbyProfilePic" />
+                <ScalarProperty Name="PostedbyMobile" ColumnName="PostedbyMobile" />
+                <ScalarProperty Name="IsFavouriteEvent" ColumnName="IsFavouriteEvent" />
+                <ScalarProperty Name="EventFavouriteID" ColumnName="EventFavouriteID" />
+                <ScalarProperty Name="IsFavouritePreacher" ColumnName="IsFavouritePreacher" />
+                <ScalarProperty Name="PreacherFavouriteID" ColumnName="PreacherFavouriteID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEventEnquiries" FunctionName="FindaPreacherModel.Store.GetEventEnquiries">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventEnquiries_Result">
+                <ScalarProperty Name="EnquiryID" ColumnName="EnquiryID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="HelpServiceTypeIDs" ColumnName="HelpServiceTypeIDs" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="HelpServiceTypes" ColumnName="HelpServiceTypes" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEventImages" FunctionName="FindaPreacherModel.Store.GetEventImages">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventImages_Result">
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEventImagesByEventIDs" FunctionName="FindaPreacherModel.Store.GetEventImagesByEventIDs">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventImagesByEventIDs_Result">
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEvents" FunctionName="FindaPreacherModel.Store.GetEvents">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetEvents_Result">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MinistryTypeID" ColumnName="MinistryTypeID" />
+                <ScalarProperty Name="HelpServiceTypeIDs" ColumnName="HelpServiceTypeIDs" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ContactEmailID" ColumnName="ContactEmailID" />
+                <ScalarProperty Name="IsBookingNeeded" ColumnName="IsBookingNeeded" />
+                <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+                <ScalarProperty Name="TicketsAvailable" ColumnName="TicketsAvailable" />
+                <ScalarProperty Name="TicketsPerPerson" ColumnName="TicketsPerPerson" />
+                <ScalarProperty Name="TicketsBooked" ColumnName="TicketsBooked" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsFavouriteEvent" ColumnName="IsFavouriteEvent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEventsByCreatedUserID" FunctionName="FindaPreacherModel.Store.GetEventsByCreatedUserID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventsByCreatedUserID_Result">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MinistryTypeID" ColumnName="MinistryTypeID" />
+                <ScalarProperty Name="HelpServiceTypeIDs" ColumnName="HelpServiceTypeIDs" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ContactEmailID" ColumnName="ContactEmailID" />
+                <ScalarProperty Name="IsBookingNeeded" ColumnName="IsBookingNeeded" />
+                <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+                <ScalarProperty Name="TicketsAvailable" ColumnName="TicketsAvailable" />
+                <ScalarProperty Name="TicketsPerPerson" ColumnName="TicketsPerPerson" />
+                <ScalarProperty Name="TicketsBooked" ColumnName="TicketsBooked" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsFavouriteEvent" ColumnName="IsFavouriteEvent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEventVideos" FunctionName="FindaPreacherModel.Store.GetEventVideos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventVideos_Result">
+                <ScalarProperty Name="VideoID" ColumnName="VideoID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEventVideosByEventIDs" FunctionName="FindaPreacherModel.Store.GetEventVideosByEventIDs">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetEventVideosByEventIDs_Result">
+                <ScalarProperty Name="VideoID" ColumnName="VideoID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetFavouriteEvents" FunctionName="FindaPreacherModel.Store.GetFavouriteEvents">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetFavouriteEvents_Result">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MinistryTypeID" ColumnName="MinistryTypeID" />
+                <ScalarProperty Name="HelpServiceTypeIDs" ColumnName="HelpServiceTypeIDs" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ContactEmailID" ColumnName="ContactEmailID" />
+                <ScalarProperty Name="IsBookingNeeded" ColumnName="IsBookingNeeded" />
+                <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+                <ScalarProperty Name="TicketsAvailable" ColumnName="TicketsAvailable" />
+                <ScalarProperty Name="TicketsPerPerson" ColumnName="TicketsPerPerson" />
+                <ScalarProperty Name="TicketsBooked" ColumnName="TicketsBooked" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetFavouritePreachers" FunctionName="FindaPreacherModel.Store.GetFavouritePreachers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetFavouritePreachers_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Pin" ColumnName="Pin" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="DenominationTypeId" ColumnName="DenominationTypeId" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="OrganisationName" ColumnName="OrganisationName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetNearByEvents" FunctionName="FindaPreacherModel.Store.GetNearByEvents">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetNearByEvents_Result">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="UserDISTANCE" ColumnName="UserDISTANCE" />
+                <ScalarProperty Name="PostedbyEmailID" ColumnName="PostedbyEmailID" />
+                <ScalarProperty Name="PostedbyFirstname" ColumnName="PostedbyFirstname" />
+                <ScalarProperty Name="PostedbyLastName" ColumnName="PostedbyLastName" />
+                <ScalarProperty Name="PostedbyProfilePic" ColumnName="PostedbyProfilePic" />
+                <ScalarProperty Name="PostedbyMobile" ColumnName="PostedbyMobile" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetNewsDetails" FunctionName="FindaPreacherModel.Store.GetNewsDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetNewsDetails_Result">
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedByUserType" ColumnName="CreatedByUserType" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="statename" ColumnName="statename" />
+                <ScalarProperty Name="districtname" ColumnName="districtname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetNewsList" FunctionName="FindaPreacherModel.Store.GetNewsList" />
+          <FunctionImportMapping FunctionImportName="GetUserDetailsById" FunctionName="FindaPreacherModel.Store.GetUserDetailsById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.GetUserDetailsById_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PostEventComment" FunctionName="FindaPreacherModel.Store.PostEventComment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.PostEventComment_Result">
+                <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RegisterUser" FunctionName="FindaPreacherModel.Store.RegisterUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.RegisterUser_Result">
+                <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+                <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UserLogin" FunctionName="FindaPreacherModel.Store.UserLogin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FindaPreacherModel.UserLogin_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_GetPaggingData" FunctionName="FindaPreacherModel.Store.USP_GetPaggingData" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

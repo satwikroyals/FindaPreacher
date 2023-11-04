@@ -1,0 +1,777 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FindaPreacherModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="Split_Result">
+    <Property Name="items" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <ComplexType Name="SplitMulti_Result">
+    <Property Name="ROWID" Type="Int16" Nullable="false" />
+    <Property Name="VALUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </ComplexType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Country1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShortCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TeleCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="UniversalDiffTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DenominationType">
+    <Key>
+      <PropertyRef Name="DenominationTypeId" />
+    </Key>
+    <Property Name="DenominationTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DenominationType1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="DistrictID" />
+    </Key>
+    <Property Name="DistrictID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateID" Type="Int64" Nullable="false" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="DistrictName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EventComment">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventID" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="EventEnquiry">
+    <Key>
+      <PropertyRef Name="EnquiryID" />
+    </Key>
+    <Property Name="EnquiryID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventID" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="HelpServiceTypeIDs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="EventHelpService">
+    <Key>
+      <PropertyRef Name="EventHelpServiceID" />
+    </Key>
+    <Property Name="EventHelpServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventID" Type="Int32" />
+    <Property Name="HelpServiceTypeID" Type="Int32" />
+    <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="IsPersonal" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="EventImage">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Name="ImageID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventID" Type="Int64" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MinistryTypeID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="HelpServiceTypeIDs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="Double" />
+    <Property Name="Longitude" Type="Double" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ContactPerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactEmailID" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="IsBookingNeeded" Type="Int32" Nullable="false" />
+    <Property Name="TicketPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TicketsAvailable" Type="Int64" Nullable="false" />
+    <Property Name="TicketsPerPerson" Type="Int64" Nullable="false" />
+    <Property Name="TicketsBooked" Type="Int64" Nullable="false" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="EventVideo">
+    <Key>
+      <PropertyRef Name="VideoID" />
+    </Key>
+    <Property Name="VideoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventID" Type="Int64" Nullable="false" />
+    <Property Name="VideoUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="FavouriteEvent">
+    <Key>
+      <PropertyRef Name="FavouriteID" />
+    </Key>
+    <Property Name="FavouriteID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventID" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="FavouritePreacher">
+    <Key>
+      <PropertyRef Name="FavouriteID" />
+    </Key>
+    <Property Name="FavouriteID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PreacherID" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="HelpServiceType">
+    <Key>
+      <PropertyRef Name="HelpServiceTypeID" />
+    </Key>
+    <Property Name="HelpServiceTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HelpServiceType1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="MinistryType">
+    <Key>
+      <PropertyRef Name="MinistryTypeID" />
+    </Key>
+    <Property Name="MinistryTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MinistryType1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="NewsID" />
+    </Key>
+    <Property Name="NewsID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="Decimal" Precision="18" Scale="6" />
+    <Property Name="Longitude" Type="Decimal" Precision="18" Scale="6" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="StateID" Type="Int64" />
+    <Property Name="DistrictID" Type="Int64" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedByUserType" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int64" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="RegionID" Type="Int64" Nullable="false" />
+    <Property Name="StateName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Pin" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PostCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ProfilePic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DenominationTypeId" Type="Int32" />
+    <Property Name="Qualification" Type="String" MaxLength="140" FixedLength="false" Unicode="true" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OrganisationName" Type="String" MaxLength="140" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="UserTypeID" />
+    </Key>
+    <Property Name="UserTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="FindaPreacherEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="DenominationTypes" EntityType="Self.DenominationType" />
+    <EntitySet Name="Districts" EntityType="Self.District" />
+    <EntitySet Name="EventComments" EntityType="Self.EventComment" />
+    <EntitySet Name="EventEnquiries" EntityType="Self.EventEnquiry" />
+    <EntitySet Name="EventHelpServices" EntityType="Self.EventHelpService" />
+    <EntitySet Name="EventImages" EntityType="Self.EventImage" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
+    <EntitySet Name="EventVideos" EntityType="Self.EventVideo" />
+    <EntitySet Name="FavouriteEvents" EntityType="Self.FavouriteEvent" />
+    <EntitySet Name="FavouritePreachers" EntityType="Self.FavouritePreacher" />
+    <EntitySet Name="HelpServiceTypes" EntityType="Self.HelpServiceType" />
+    <EntitySet Name="MinistryTypes" EntityType="Self.MinistryType" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="States" EntityType="Self.State" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+    <FunctionImport Name="Split" IsComposable="true" ReturnType="Collection(FindaPreacherModel.Split_Result)">
+      <Parameter Name="String" Mode="In" Type="String" />
+      <Parameter Name="Delimiter" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SplitMulti" IsComposable="true" ReturnType="Collection(FindaPreacherModel.SplitMulti_Result)">
+      <Parameter Name="LIST" Mode="In" Type="String" />
+      <Parameter Name="DELIMITER" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddEvent" ReturnType="Collection(FindaPreacherModel.AddEvent_Result)">
+      <Parameter Name="EventID" Mode="In" Type="Int64" />
+      <Parameter Name="UserID" Mode="In" Type="Int64" />
+      <Parameter Name="Title" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="MinistryTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="HelpServiceTypeIDs" Mode="In" Type="String" />
+      <Parameter Name="Location" Mode="In" Type="String" />
+      <Parameter Name="Latitude" Mode="In" Type="String" />
+      <Parameter Name="Longitude" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="String" />
+      <Parameter Name="EndDate" Mode="In" Type="String" />
+      <Parameter Name="ContactPerson" Mode="In" Type="String" />
+      <Parameter Name="ContactPhone" Mode="In" Type="String" />
+      <Parameter Name="ContactEmailID" Mode="In" Type="String" />
+      <Parameter Name="IsBookingNeeded" Mode="In" Type="Int32" />
+      <Parameter Name="TicketPrice" Mode="In" Type="String" />
+      <Parameter Name="TicketsAvailable" Mode="In" Type="Int64" />
+      <Parameter Name="TicketsPerPerson" Mode="In" Type="Int64" />
+      <Parameter Name="TicketsBooked" Mode="In" Type="Int64" />
+      <Parameter Name="Status" Mode="In" Type="Int32" />
+      <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="AddEventEnquiry" ReturnType="Collection(FindaPreacherModel.AddEventEnquiry_Result)">
+      <Parameter Name="EventID" Mode="In" Type="Int64" />
+      <Parameter Name="UserID" Mode="In" Type="Int64" />
+      <Parameter Name="HelpServiceTypeIDs" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddRemoveFavouriteEvent" ReturnType="Collection(FindaPreacherModel.AddRemoveFavouriteEvent_Result)">
+      <Parameter Name="EventID" Mode="In" Type="Int64" />
+      <Parameter Name="UserID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="AddRemoveFavouritePreacher" ReturnType="Collection(FindaPreacherModel.AddRemoveFavouritePreacher_Result)">
+      <Parameter Name="PreacherID" Mode="In" Type="Int64" />
+      <Parameter Name="UserID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="AddUpdateNews" ReturnType="Collection(FindaPreacherModel.AddUpdateNews_Result)">
+      <Parameter Name="NewsID" Mode="In" Type="Int64" />
+      <Parameter Name="Title" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Image" Mode="In" Type="String" />
+      <Parameter Name="Location" Mode="In" Type="String" />
+      <Parameter Name="Latitude" Mode="In" Type="String" />
+      <Parameter Name="Longitude" Mode="In" Type="String" />
+      <Parameter Name="CountryID" Mode="In" Type="Int32" />
+      <Parameter Name="StateID" Mode="In" Type="Int32" />
+      <Parameter Name="DistrictID" Mode="In" Type="Int32" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="DisplayOrder" Mode="In" Type="Int32" />
+      <Parameter Name="Status" Mode="In" Type="Int32" />
+      <Parameter Name="CreatedByUserType" Mode="In" Type="Int32" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="DdlGetDenominationTypes" ReturnType="Collection(FindaPreacherModel.DdlGetDenominationTypes_Result)" />
+    <FunctionImport Name="DdlGetEventHelpServiceTypes" ReturnType="Collection(FindaPreacherModel.DdlGetEventHelpServiceTypes_Result)">
+      <Parameter Name="EventID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="DdlGetHelpServiceTypes" ReturnType="Collection(FindaPreacherModel.DdlGetHelpServiceTypes_Result)" />
+    <FunctionImport Name="DdlGetMinistryTypes" ReturnType="Collection(FindaPreacherModel.DdlGetMinistryTypes_Result)" />
+    <FunctionImport Name="DeleteEvent" ReturnType="Collection(FindaPreacherModel.DeleteEvent_Result)">
+      <Parameter Name="EventID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteEventComment" ReturnType="Collection(FindaPreacherModel.DeleteEventComment_Result)">
+      <Parameter Name="CommentID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteEventEnquiry" ReturnType="Collection(FindaPreacherModel.DeleteEventEnquiry_Result)">
+      <Parameter Name="EnquiryID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteNews" ReturnType="Collection(FindaPreacherModel.DeleteNews_Result)">
+      <Parameter Name="NewsID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="EventDetails" ReturnType="Collection(FindaPreacherModel.EventDetails_Result)">
+      <Parameter Name="EventID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAdminNewsList">
+      <Parameter Name="CountryID" Mode="In" Type="Int32" />
+      <Parameter Name="StateID" Mode="In" Type="Int64" />
+      <Parameter Name="DistrictID" Mode="In" Type="Int64" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="Location" Mode="In" Type="String" />
+      <Parameter Name="FromDate" Mode="In" Type="String" />
+      <Parameter Name="ToDate" Mode="In" Type="String" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="Searchstr" Mode="In" Type="String" />
+      <Parameter Name="SortBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetDdlCountries" ReturnType="Collection(FindaPreacherModel.GetDdlCountries_Result)" />
+    <FunctionImport Name="GetEventComments" ReturnType="Collection(FindaPreacherModel.GetEventComments_Result)">
+      <Parameter Name="EventID" Mode="In" Type="Int64" />
+      <Parameter Name="UserID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="GetEventDetails" ReturnType="Collection(FindaPreacherModel.GetEventDetails_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int64" />
+      <Parameter Name="EventID" Mode="In" Type="Int64" />
+      <Parameter Name="Latitude" Mode="In" Type="Decimal" />
+      <Parameter Name="Longitude" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="GetEventEnquiries" ReturnType="Collection(FindaPreacherModel.GetEventEnquiries_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="GetEventImages" ReturnType="Collection(FindaPreacherModel.GetEventImages_Result)">
+      <Parameter Name="EventID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="GetEventImagesByEventIDs" ReturnType="Collection(FindaPreacherModel.GetEventImagesByEventIDs_Result)">
+      <Parameter Name="EventIDs" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetEvents" ReturnType="Collection(FindaPreacherModel.GetEvents_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="GetEventsByCreatedUserID" ReturnType="Collection(FindaPreacherModel.GetEventsByCreatedUserID_Result)">
+      <Parameter Name="CreatedUserID" Mode="In" Type="Int64" />
+      <Parameter Name="UserID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="GetEventVideos" ReturnType="Collection(FindaPreacherModel.GetEventVideos_Result)">
+      <Parameter Name="EventID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="GetEventVideosByEventIDs" ReturnType="Collection(FindaPreacherModel.GetEventVideosByEventIDs_Result)">
+      <Parameter Name="EventIDs" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetFavouriteEvents" ReturnType="Collection(FindaPreacherModel.GetFavouriteEvents_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="GetFavouritePreachers" ReturnType="Collection(FindaPreacherModel.GetFavouritePreachers_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="GetNearByEvents" ReturnType="Collection(FindaPreacherModel.GetNearByEvents_Result)">
+      <Parameter Name="Latitude" Mode="In" Type="Decimal" />
+      <Parameter Name="Longitude" Mode="In" Type="Decimal" />
+      <Parameter Name="Radius" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetNewsDetails" ReturnType="Collection(FindaPreacherModel.GetNewsDetails_Result)">
+      <Parameter Name="NewsID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="GetNewsList">
+      <Parameter Name="CountryID" Mode="In" Type="Int32" />
+      <Parameter Name="StateID" Mode="In" Type="Int64" />
+      <Parameter Name="DistrictID" Mode="In" Type="Int64" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="Searchstr" Mode="In" Type="String" />
+      <Parameter Name="SortBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetUserDetailsById" ReturnType="Collection(FindaPreacherModel.GetUserDetailsById_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="PostEventComment" ReturnType="Collection(FindaPreacherModel.PostEventComment_Result)">
+      <Parameter Name="EventID" Mode="In" Type="Int64" />
+      <Parameter Name="UserID" Mode="In" Type="Int64" />
+      <Parameter Name="Comment" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RegisterUser" ReturnType="Collection(FindaPreacherModel.RegisterUser_Result)">
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Mobile" Mode="In" Type="String" />
+      <Parameter Name="Pin" Mode="In" Type="String" />
+      <Parameter Name="CountryID" Mode="In" Type="Int32" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="Longitude" Mode="In" Type="String" />
+      <Parameter Name="Latitude" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="PostCode" Mode="In" Type="String" />
+      <Parameter Name="UserTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="DenominationTypeId" Mode="In" Type="Int32" />
+      <Parameter Name="Qualification" Mode="In" Type="String" />
+      <Parameter Name="Details" Mode="In" Type="String" />
+      <Parameter Name="OrganisationName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UserLogin" ReturnType="Collection(FindaPreacherModel.UserLogin_Result)">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Pin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_GetPaggingData">
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="Query" Mode="InOut" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="AddEvent_Result">
+    <Property Type="Int64" Name="ResultId" Nullable="true" />
+    <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="AddEventEnquiry_Result">
+    <Property Type="Int64" Name="ResultId" Nullable="true" />
+    <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="AddRemoveFavouriteEvent_Result">
+    <Property Type="Int64" Name="ResultId" Nullable="true" />
+    <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="AddRemoveFavouritePreacher_Result">
+    <Property Type="Int64" Name="ResultId" Nullable="true" />
+    <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="AddUpdateNews_Result">
+    <Property Type="Int64" Name="ResultID" Nullable="true" />
+    <Property Type="String" Name="ResultMessage" Nullable="false" MaxLength="34" />
+  </ComplexType>
+  <ComplexType Name="DdlGetDenominationTypes_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Txt" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="DdlGetEventHelpServiceTypes_Result">
+    <Property Type="Int32" Name="HelpServiceTypeID" Nullable="false" />
+    <Property Type="String" Name="HelpServiceType" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="DdlGetHelpServiceTypes_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Txt" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="DdlGetMinistryTypes_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Txt" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="DeleteEvent_Result">
+    <Property Type="Int64" Name="ResultId" Nullable="true" />
+    <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="DeleteEventComment_Result">
+    <Property Type="Int64" Name="ResultId" Nullable="true" />
+    <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="DeleteEventEnquiry_Result">
+    <Property Type="Int64" Name="ResultId" Nullable="true" />
+    <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="DeleteNews_Result">
+    <Property Type="Int32" Name="ResultId" Nullable="false" />
+    <Property Type="String" Name="ResultMessage" Nullable="false" MaxLength="26" />
+  </ComplexType>
+  <ComplexType Name="EventDetails_Result">
+    <Property Type="Int64" Name="UserID" Nullable="false" />
+    <Property Type="Int32" Name="UserTypeID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="Image" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Message" Nullable="true" />
+    <Property Type="String" Name="Location" Nullable="true" MaxLength="1000" />
+    <Property Type="Double" Name="Latitude" Nullable="true" />
+    <Property Type="Double" Name="Longitude" Nullable="true" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ContactEmailID" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="ContactPhone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="TicketPrice" Nullable="false" MaxLength="50" />
+    <Property Type="Int64" Name="TicketsBooked" Nullable="false" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="GetDdlCountries_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Txt" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="GetEventComments_Result">
+    <Property Type="Int64" Name="CommentID" Nullable="false" />
+    <Property Type="Int64" Name="EventID" Nullable="false" />
+    <Property Type="Int64" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Comment" Nullable="false" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+    <Property Type="DateTime" Name="PostedDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="CommentedByName" Nullable="false" MaxLength="101" />
+    <Property Type="String" Name="CommentedByEmail" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="CommentedByMobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="CommentedByProfilePic" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="IsPosted" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetEventDetails_Result">
+    <Property Type="Int64" Name="EventID" Nullable="false" />
+    <Property Type="Int64" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="MinistryTypeID" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="HelpServiceTypeIDs" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="Location" Nullable="true" MaxLength="1000" />
+    <Property Type="Double" Name="Latitude" Nullable="true" />
+    <Property Type="Double" Name="Longitude" Nullable="true" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ContactPhone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ContactEmailID" Nullable="true" MaxLength="400" />
+    <Property Type="Int32" Name="IsBookingNeeded" Nullable="false" />
+    <Property Type="String" Name="TicketPrice" Nullable="false" MaxLength="50" />
+    <Property Type="Int64" Name="TicketsAvailable" Nullable="false" />
+    <Property Type="Int64" Name="TicketsPerPerson" Nullable="false" />
+    <Property Type="Int64" Name="TicketsBooked" Nullable="false" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="HelpServiceTypes" Nullable="true" />
+    <Property Type="String" Name="MinistryType" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="UserDISTANCE" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="PostedbyEmailID" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="PostedbyFirstname" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PostedbyLastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PostedbyProfilePic" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PostedbyMobile" Nullable="false" MaxLength="20" />
+    <Property Type="Boolean" Name="IsFavouriteEvent" Nullable="true" />
+    <Property Type="Int64" Name="EventFavouriteID" Nullable="true" />
+    <Property Type="Int32" Name="IsFavouritePreacher" Nullable="false" />
+    <Property Type="Int64" Name="PreacherFavouriteID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetEventEnquiries_Result">
+    <Property Type="Int64" Name="EnquiryID" Nullable="false" />
+    <Property Type="Int64" Name="EventID" Nullable="false" />
+    <Property Type="Int64" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="HelpServiceTypeIDs" Nullable="true" />
+    <Property Type="String" Name="Message" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="HelpServiceTypes" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ProfilePic" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="CountryID" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="Longitude" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Latitude" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PostCode" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="GetEventImages_Result">
+    <Property Type="Int64" Name="ImageID" Nullable="false" />
+    <Property Type="Int64" Name="EventID" Nullable="false" />
+    <Property Type="String" Name="Image" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="GetEventImagesByEventIDs_Result">
+    <Property Type="Int64" Name="ImageID" Nullable="false" />
+    <Property Type="Int64" Name="EventID" Nullable="false" />
+    <Property Type="String" Name="Image" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="GetEvents_Result">
+    <Property Type="Int64" Name="EventID" Nullable="false" />
+    <Property Type="Int64" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="MinistryTypeID" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="HelpServiceTypeIDs" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="Location" Nullable="true" MaxLength="1000" />
+    <Property Type="Double" Name="Latitude" Nullable="true" />
+    <Property Type="Double" Name="Longitude" Nullable="true" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ContactPhone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ContactEmailID" Nullable="true" MaxLength="400" />
+    <Property Type="Int32" Name="IsBookingNeeded" Nullable="false" />
+    <Property Type="String" Name="TicketPrice" Nullable="false" MaxLength="50" />
+    <Property Type="Int64" Name="TicketsAvailable" Nullable="false" />
+    <Property Type="Int64" Name="TicketsPerPerson" Nullable="false" />
+    <Property Type="Int64" Name="TicketsBooked" Nullable="false" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="IsFavouriteEvent" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetEventsByCreatedUserID_Result">
+    <Property Type="Int64" Name="EventID" Nullable="false" />
+    <Property Type="Int64" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="MinistryTypeID" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="HelpServiceTypeIDs" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="Location" Nullable="true" MaxLength="1000" />
+    <Property Type="Double" Name="Latitude" Nullable="true" />
+    <Property Type="Double" Name="Longitude" Nullable="true" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ContactPhone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ContactEmailID" Nullable="true" MaxLength="400" />
+    <Property Type="Int32" Name="IsBookingNeeded" Nullable="false" />
+    <Property Type="String" Name="TicketPrice" Nullable="false" MaxLength="50" />
+    <Property Type="Int64" Name="TicketsAvailable" Nullable="false" />
+    <Property Type="Int64" Name="TicketsPerPerson" Nullable="false" />
+    <Property Type="Int64" Name="TicketsBooked" Nullable="false" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="IsFavouriteEvent" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetEventVideos_Result">
+    <Property Type="Int64" Name="VideoID" Nullable="false" />
+    <Property Type="Int64" Name="EventID" Nullable="false" />
+    <Property Type="String" Name="VideoUrl" Nullable="false" MaxLength="500" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="GetEventVideosByEventIDs_Result">
+    <Property Type="Int64" Name="VideoID" Nullable="false" />
+    <Property Type="Int64" Name="EventID" Nullable="false" />
+    <Property Type="String" Name="VideoUrl" Nullable="false" MaxLength="500" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="GetFavouriteEvents_Result">
+    <Property Type="Int64" Name="EventID" Nullable="false" />
+    <Property Type="Int64" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="MinistryTypeID" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="HelpServiceTypeIDs" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="Location" Nullable="true" MaxLength="1000" />
+    <Property Type="Double" Name="Latitude" Nullable="true" />
+    <Property Type="Double" Name="Longitude" Nullable="true" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ContactPhone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ContactEmailID" Nullable="true" MaxLength="400" />
+    <Property Type="Int32" Name="IsBookingNeeded" Nullable="false" />
+    <Property Type="String" Name="TicketPrice" Nullable="false" MaxLength="50" />
+    <Property Type="Int64" Name="TicketsAvailable" Nullable="false" />
+    <Property Type="Int64" Name="TicketsPerPerson" Nullable="false" />
+    <Property Type="Int64" Name="TicketsBooked" Nullable="false" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="GetFavouritePreachers_Result">
+    <Property Type="Int64" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Pin" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="CountryID" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="Longitude" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Latitude" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PostCode" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ProfilePic" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="UserTypeID" Nullable="false" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="DenominationTypeId" Nullable="true" />
+    <Property Type="String" Name="Qualification" Nullable="true" MaxLength="140" />
+    <Property Type="String" Name="Details" Nullable="true" />
+    <Property Type="String" Name="OrganisationName" Nullable="true" MaxLength="140" />
+  </ComplexType>
+  <ComplexType Name="GetNearByEvents_Result">
+    <Property Type="Int64" Name="EventID" Nullable="false" />
+    <Property Type="Int64" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Location" Nullable="true" MaxLength="1000" />
+    <Property Type="Double" Name="Latitude" Nullable="true" />
+    <Property Type="Double" Name="Longitude" Nullable="true" />
+    <Property Type="String" Name="UserDISTANCE" Nullable="true" MaxLength="33" />
+    <Property Type="String" Name="PostedbyEmailID" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="PostedbyFirstname" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PostedbyLastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PostedbyProfilePic" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PostedbyMobile" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="GetNewsDetails_Result">
+    <Property Type="Int64" Name="NewsID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="Image" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Location" Nullable="true" MaxLength="4000" />
+    <Property Type="Decimal" Name="Latitude" Nullable="true" Precision="18" Scale="6" />
+    <Property Type="Decimal" Name="Longitude" Nullable="true" Precision="18" Scale="6" />
+    <Property Type="Int32" Name="CountryID" Nullable="true" />
+    <Property Type="Int64" Name="StateID" Nullable="true" />
+    <Property Type="Int64" Name="DistrictID" Nullable="true" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="DisplayOrder" Nullable="false" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+    <Property Type="Int32" Name="CreatedByUserType" Nullable="false" />
+    <Property Type="Int64" Name="CreatedBy" Nullable="false" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="country" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="statename" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="districtname" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="GetUserDetailsById_Result">
+    <Property Type="Int64" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ProfilePic" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PostCode" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="CountryID" Nullable="true" />
+    <Property Type="String" Name="Country" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="UserTypeID" Nullable="false" />
+    <Property Type="String" Name="UserType" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="Longitude" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Latitude" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="PostEventComment_Result">
+    <Property Type="Int64" Name="ResultId" Nullable="true" />
+    <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="RegisterUser_Result">
+    <Property Type="Int64" Name="ResultId" Nullable="true" />
+    <Property Type="String" Name="ResultMessage" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="UserLogin_Result">
+    <Property Type="Int64" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ProfilePic" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="CountryID" Nullable="true" />
+    <Property Type="String" Name="Country" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="UserTypeID" Nullable="false" />
+    <Property Type="String" Name="UserType" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="Longitude" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Latitude" Nullable="true" MaxLength="30" />
+  </ComplexType>
+</Schema>
